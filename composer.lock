@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce0af5eea3d86855af398d0f3555645f",
+    "content-hash": "3b48814e65fca01ddbfe43b3ffbded16",
     "packages": [
         {
             "name": "composer/installers",
@@ -533,26 +533,6 @@
             "description": "An eCommerce toolkit that helps you sell anything. Beautifully.",
             "homepage": "https://woocommerce.com/",
             "time": "2018-10-31T17:02:06+00:00"
-        },
-        {
-            "name": "wpackagist-theme/storefront",
-            "version": "2.3.5",
-            "source": {
-                "type": "svn",
-                "url": "https://themes.svn.wordpress.org/storefront/",
-                "reference": "2.3.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/storefront.2.3.5.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/storefront/"
         }
     ],
     "packages-dev": [
