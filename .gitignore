@@ -21,3 +21,6 @@ web/.htaccess
 
 # Composer
 /vendor
+
+# Emacs
+.ac-php-conf.json
