@@ -1,0 +1,61 @@
+// Before Header  /////////////////////////////////////////////////////////////
+
+.before-header {
+  background-color: #169fda;
+  padding-top: ms(1);
+  padding-bottom: ms(1);
+}
+
+.payment-acceptance-logos {
+  float: left;
+
+  > img {
+    float: left;
+    padding-right: ms(0);
+    height: ms(2);
+  }
+}
+
+.topbar-phone-number {
+  float: left;
+  border-left: solid 2px $white;
+  padding-left: ms(0);
+
+  a {
+    color: $white;
+    font-size: ms(2);
+    line-height: 1;
+  }
+}
+
+
+
+#top ul li a {
+}
+
+#top .topbar-phone-number {
+  float: left;
+  text-align: center
+}
+
+#top .topbar-phone-number a {
+  font-weight: 700;
+  color: white !important;
+}
+#top .topbar-phone-number a .top-line {
+  font-size: 13px;
+}
+#top .topbar-phone-number a .bottom-line {
+  font-size: 23px;
+}
+
+
+#top .topbar-phone-number a:hover,
+#top .topbar-phone-number a:active,
+#top .topbar-phone-number a:focus {
+  text-decoration: none !important;
+}
+
+.cap-menu-default {
+  border: 1px solid #eeeeee;
+}

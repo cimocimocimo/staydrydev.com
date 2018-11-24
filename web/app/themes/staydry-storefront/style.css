@@ -1,12 +1,15 @@
 /*
-Theme Name:   	StayDry Storefront Child Theme
-Theme URI:    	https://github.com/cimocimocimo/staydry-storefront
-Author:       	Aaron Cimolini
-Author URI:     http://cimolini.com
-Template:     	storefront-master
-Description:  	This is a child theme for WooThemes StoreFront theme. Customized for use by StayDry Shower Systems.
-Version:      	0.1
-License:      	GNU General Public License v2 or later
-License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  	storefront
+This file is responsible only for providing theme information that are displayed
+in `Apperance > Themes`. Do not write in here any CSS declarations.
+
+Theme Name: Tonik WordPress Starter Theme
+Theme URI: //labs.tonik.pl/theme/
+Description: Enhance your WordPress theme development workflow
+Version: 3.0.0
+Author: Tonik
+Author URI: //tonik.pl/
+Text Domain: tonik
+Template: storefront-master
+License: GPLv2 License
+License URI: https://wordpress.org/about/gpl/
 */

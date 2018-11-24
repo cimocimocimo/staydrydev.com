@@ -1,29 +1,34 @@
 <?php
 
-/**
- * Storefront automatically loads the core CSS even if using a child theme as it is more efficient
- * than @importing it in the child theme style.css file.
- *
- * Uncomment the line below if you'd like to disable the Storefront Core CSS.
- *
- * If you don't plan to dequeue the Storefront Core CSS you can remove the subsequent line and as well
- * as the sf_child_theme_dequeue_style() function declaration.
+/*
+ |------------------------------------------------------------------
+ | Bootstraping a Theme
+ |------------------------------------------------------------------
+ |
+ | This file is responsible for bootstrapping your theme. Autoloads
+ | composer packages, checks compatibility and loads theme files.
+ | Most likely, you don't need to change anything in this file.
+ | Your theme custom logic should be distributed across a
+ | separated components in the `/app` directory.
+ |
  */
-//add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
-/**
- * Dequeue the Storefront Parent theme core CSS
- */
-function sf_child_theme_dequeue_style() {
-    wp_dequeue_style( 'storefront-style' );
-    wp_dequeue_style( 'storefront-woocommerce-style' );
+// Require Composer's autoloading file
+// if it's present in theme directory.
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require $composer;
 }
 
-/**
- * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
- */
+// Before running we need to check if everything is in place.
+// If something went wrong, we will display friendly alert.
+$ok = require_once __DIR__ . '/bootstrap/compatibility.php';
 
-/**
- * Enable Roots Soil plugin to cleanup WP head.
- */
-add_theme_support('soil-clean-up');
+if ($ok) {
+    // Now, we can bootstrap our theme.
+    $theme = require_once __DIR__ . '/bootstrap/theme.php';
+
+    // Autoload theme. Uses localize_template() and
+    // supports child theme overriding. However,
+    // they must be under the same dir path.
+    (new Tonik\Gin\Foundation\Autoloader($theme->get('config')))->register();
+}

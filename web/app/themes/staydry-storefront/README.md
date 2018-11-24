@@ -1,28 +1,48 @@
-# Storefront Child Theme
+# Tonik — WordPress Starter Theme
 
-The StoreFront Child Theme is a starter blank child theme for WooThemes StoreFront WooCommerce theme.
+> The `develop` branch tracks starter development and it's not a stable code. If you want a stable version, use the [`master`](//github.com/tonik/theme/tree/master) branch or one of the latest [releases](//github.com/tonik/theme/releases).
 
-## Installation
+[![Build Status](https://travis-ci.org/tonik/theme.svg?branch=master)](https://travis-ci.org/tonik/theme) [![Packagist](https://img.shields.io/packagist/dt/tonik/theme.svg)](https://github.com/tonik/theme) [![license](https://img.shields.io/github/license/tonik/theme.svg)](https://github.com/tonik/theme)
 
-1. Download the child theme from it's GitHub Repository [Download StoreFront Blank Child Theme](https://github.com/stuartduff/storefront-child-theme).
-2. Goto WordPress > Appearance > Themes > Add New.
-2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
+### Tonik is a WordPress Starter Theme which aims to modernize, organize and enhance some aspects of WordPress theme development.
 
-## Usage
+Take a look at what is waiting for you:
 
-This child theme is designed to be used as a starter theme for the WooCommerce StoreFront theme which you can download for free below.
+- [ES6](https://babeljs.io/learn-es2015/) for JavaScript
+- [SASS](http://sass-lang.com/) preprocessor for CSS
+- [Webpack](https://webpack.js.org/) for managing, compiling and optimizing theme's asset files
+- Simple [CLI](https://github.com/tonik/cli) for quickly initializing a new project
+- Ready to use front-end boilerplates for [Foundation](//foundation.zurb.com/sites.html), [Bootstrap](//getbootstrap.com/docs/3.3/), [Bulma](//bulma.io/) and [Vue](//vuejs.org/)
+- Utilizes PHP [Namespaces](http://php.net/manual/pl/language.namespaces.php)
+- Simple [Theme Service Container](http://symfony.com/doc/2.0/glossary.html#term-service-container)
+- Child Theme friendly [Autoloader](https://en.wikipedia.org/wiki/Autoload)
+- Readable and centralized Theme Configs
+- Oriented for building with [Actions](https://codex.wordpress.org/Glossary#Action) and [Filters](https://codex.wordpress.org/Glossary#Filter)
+- Enhanced [Templating](https://en.wikibooks.org/wiki/PHP_Programming/Why_Templating) with support for passing data
 
-* [Download WooCommerce StoreFront Theme](https://wordpress.org/themes/storefront/)
-* [StoreFront Documentation](http://docs.woocommerce.com/documentation/themes/storefront/)
-* [StoreFront Child Themes](https://woocommerce.com/product-category/themes/storefront-child-theme-themes/)
-* [StoreFront Extensions](https://woocommerce.com/product-category/storefront-extensions/)
+### Requirements
 
-Custom PHP that you write should be added to the child themes functions.php file whilst any custom CSS should be added to the child themes style.css file.
+Tonik Starter Theme follows [WordPress recommended requirements](https://wordpress.org/about/requirements/). Make sure you have all these dependences installed before moving on:
 
-There is also a style.scss file within the /assets/sass/ folder that can be used if you wish to write [SASS - Syntactically Awesome Style Sheets](http://sass-lang.com/) based styles which can then be compiled into the style.css file using an app like [CodeKit](https://incident57.com/codekit/) for OSX or [PrePros](https://prepros.io/) for Windows.
+- WordPress >= 4.7
+- PHP >= 7.0
+- [Composer](https://getcomposer.org)
+- [Node.js](https://nodejs.org)
 
-The blank child theme itself has no functionality and if you would like to learn more about child themes for WordPress see this documentation below.
+## Documentation
 
-* [WordPress Child Themes](https://codex.wordpress.org/Child_Themes)
+Comprehensive documentation of the starter is available at http://labs.tonik.pl/theme/
 
+## Contributing
+
+Great that you are considering supporting the project. You have a lot of ways to help us grow. We appreciate all contributions, even the smallest.
+
+- Report an issue
+- Propose a feature
+- Send a pull request
+- Star project on the [GitHub](https://github.com/tonik/tonik)
+- Tell about project around your community
+
+## License
+
+The Tonik Starter Theme is licensed under the [MIT license](http://opensource.org/licenses/MIT).
