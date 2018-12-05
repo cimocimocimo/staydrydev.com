@@ -94,3 +94,71 @@ add_action( 'init', function () {
     remove_action('homepage', 'storefront_popular_products', 50);
     remove_action('homepage', 'storefront_best_selling_products', 70);
 });
+
+/**
+ * Custom args for homepage featured products block
+ */
+add_filter( 'storefront_featured_products_args', function () {
+    return array(
+        'limit'      => 4,
+        'columns'    => 4,
+        'orderby'    => 'date',
+        'order'      => 'desc',
+        'visibility' => 'featured',
+        'title'      => __( 'StayDry Products', 'storefront' ),
+    );
+});
+
+/**
+ * Show replacement components on the homepage.
+ */
+add_action( 'homepage', function () {
+    $args = apply_filters(
+        'staydry_replacement_components_args', array(
+            'limit'   => 4,
+            'columns' => 4,
+            'orderby' => 'date',
+            'order'   => 'desc',
+            'category' => 'replacement',
+            'title'   => __( 'Replacement Components', 'storefront' ),
+        )
+    );
+
+    $shortcode_content = storefront_do_shortcode(
+        'products', apply_filters(
+            'staydry_replacement_components_shortcode_args', array(
+                'per_page' => intval( $args['limit'] ),
+                'columns'  => intval( $args['columns'] ),
+                'orderby'  => esc_attr( $args['orderby'] ),
+                'order'    => esc_attr( $args['order'] ),
+                'category'  => esc_attr( $args['category'] ),
+            )
+        )
+    );
+
+    /**
+     * Only display the section if the shortcode returns products
+     */
+    if ( false !== strpos( $shortcode_content, 'product' ) ) {
+        echo '<section class="storefront-product-section staydry-replacement-components" aria-label="' . esc_attr__( $args['title'], 'storefront' ) . '">';
+
+        do_action( 'storefront_homepage_before_replacement_components' );
+
+        echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
+
+        do_action( 'storefront_homepage_after_replacement_components_title' );
+
+        echo $shortcode_content; // WPCS: XSS ok.
+
+        do_action( 'storefront_homepage_after_replacement_components' );
+
+        echo '</section>';
+    }
+}, 70);
+
+/**
+ * Commercial products homepage block.
+ */
+add_action( 'homepage', function () {
+    template('partials/commercial-homepage');
+}, 80);
