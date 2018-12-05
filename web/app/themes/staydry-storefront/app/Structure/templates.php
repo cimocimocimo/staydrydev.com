@@ -82,3 +82,15 @@ add_action('theme/header/end', 'Tonik\Theme\App\Structure\render_documentation_b
 add_action('storefront_before_header', function(){
     template('partials/before_header');
 });
+
+/**
+ * Removes default homepage function hooks
+ */
+add_action( 'init', function () {
+    // to remove action hooks in the parent theme we need to call remove_action during init.
+    remove_action('homepage', 'storefront_homepage_content', 10);
+    remove_action('homepage', 'storefront_product_categories', 20);
+    remove_action('homepage', 'storefront_recent_products', 30);
+    remove_action('homepage', 'storefront_popular_products', 50);
+    remove_action('homepage', 'storefront_best_selling_products', 70);
+});
