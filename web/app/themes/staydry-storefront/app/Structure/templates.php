@@ -162,3 +162,20 @@ add_action( 'homepage', function () {
 add_action( 'homepage', function () {
     template('partials/commercial-homepage');
 }, 80);
+
+/**
+ * Customer logos homepage block.
+ */
+add_action( 'homepage', function () {
+    $customers = get_field('corporate_customers');
+
+    foreach ($customers['customers'] as $i => $customer) {
+        $customers['customers'][$i] = [
+            'name' => $customer->post_title,
+            'img' => get_the_post_thumbnail( $customer->ID, 'medium')
+        ];
+    }
+
+    template('partials/corporate-customers-homepage', $customers);
+
+}, 90);

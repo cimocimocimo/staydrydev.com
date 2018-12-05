@@ -22,8 +22,5 @@ $fields = get_fields();
 // var_dump($fields);
 
 template('homepage', [
-    'headline' => $fields['headline'],
-    'subheading' => $fields['sub-heading'],
-    'feature_bullets' => $fields['feature_bullets'],
-    'image' => $fields['image'],
+    'hero' => get_field('hero'),
 ]);

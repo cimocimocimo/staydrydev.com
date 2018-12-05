@@ -1,21 +1,18 @@
-<?php get_header(); ?>
+<?php
+
+    use function Tonik\Theme\App\template;
+
+    get_header();
+
+?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+        <?php
 
-        <div class="homepage-hero">
-            <h2><?= $headline ?></h2>
-            <h3><?= $subheading ?></h3>
-            <ul>
-                <?php foreach ($feature_bullets as $feature): ?>
-                    <li><?= $feature['text'] ?></li>
-                <?php endforeach; ?>
-            </ul>
-            <div class="homepage-hero__image">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-            </div>
-        </div>
+            if ($hero) {
+                template('partials/homepage-hero', ['hero' => $hero,]);
+            }
 
-		<?php
 			/**
 			 * Functions hooked in to homepage action
 			 *
