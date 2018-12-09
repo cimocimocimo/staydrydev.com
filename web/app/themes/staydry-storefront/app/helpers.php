@@ -81,3 +81,99 @@ function asset_path($file)
 {
     return asset($file)->getUri();
 }
+
+/**
+ * Returns an array of abbreviated posts with thumbnail data.
+ *
+ * @param array $posts Array of WP_Post objects.
+ * @param string $thubm_size Size of post thumbnail to get.
+ *
+ * @return Array of stdClass objects
+ */
+function format_brief_posts($posts, $thumb_size = 'thumbnail')
+{
+
+    if ( !is_array($posts) ) {
+        return;
+    }
+
+    $brief_posts = [];
+
+    foreach ($posts as $key => $post){
+        $brief_posts[$key] = format_brief_single_post($post, $thumb_size);
+    }
+
+    return $brief_posts;
+}
+
+/**
+ * Returns abbreviated posts as a stdClass object with thumbnail data.
+ *
+ * @param WP_Post $post Wordpress Post object.
+ * @param string $thubm_size Size of post thumbnail to get.
+ *
+ * @return Std Object with abbreviated data.
+ */
+function format_brief_single_post($post, $thumb_size = 'thumbnail')
+{
+    return (object)[
+        'ID' => $post->ID,
+        'thumbnail' => get_the_post_thumbnail($post->ID, $thumb_size),
+        'title' => get_the_title($post->ID),
+        'permalink' => get_the_permalink($post->ID),
+    ];
+}
+
+/**
+ * Matches the area of two rectangles
+ *
+ * When given the height and width of two rectangles it will return a new height and width
+ * of the 2nd rectangle so that it's area matches the 1st.
+ *
+ * @return array([width], [height]) on success
+ * @return bool false on failure
+ */
+function match_area_of_rectangles($target, $subject){
+    // check $target is array and has 2 elements
+    if (is_array($target) && count($target) == 2){
+        // ensure we have two numbers
+        if (is_numeric($target[0]) && is_numeric($target[1])){
+            // calculate area
+            $target_area = floatval($target[0]) * floatval($target[1]);
+        } else {
+            return false;
+        }
+    }
+    // is $target a number?
+    elseif (is_numeric($target)){
+        // assume it's the length of one side of a square
+        $target_area = pow(floatval($target), 2);
+    } else {
+        return false;
+    }
+
+    // check $subject is array and has 2 elements
+    if (is_array($subject) && count($subject) == 2){
+        // ensure we have 2 numbers
+        if (is_numeric($subject[0]) && is_numeric($subject[1])){
+            // cast as floats
+            $sub_w = floatval($subject[0]);
+            $sub_h = floatval($subject[1]);
+
+            // calculate height and width
+            return [
+                // width
+                sqrt(
+                    $target_area * ($sub_w/$sub_h)
+                ),
+                // height
+                sqrt(
+                    $target_area * ($sub_h/$sub_w)
+                ),
+            ];
+        }
+    }
+
+    // an error occured above
+    return false;
+}
