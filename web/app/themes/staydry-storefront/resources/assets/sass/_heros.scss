@@ -1,0 +1,15 @@
+/* Storefront override to allow better spacing for the hero on mobile */
+.page-template-template-homepage:not( .has-post-thumbnail ) {
+  .site-main {
+    padding-top: 0 !important;
+  }
+}
+
+.homepage-hero {
+  &__content {
+    h3,
+    ul {
+      display: none;
+    }
+  }
+}
