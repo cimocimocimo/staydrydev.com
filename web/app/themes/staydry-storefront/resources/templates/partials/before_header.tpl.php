@@ -15,9 +15,5 @@
                 <span class="bottom-line">1-866-944-0449</span>
             </a>
         </div>
-        <div class="row">
-            <div class="top-msg-wrap col-lg-6 col-md-6 col-sm-6 hidden-xs">
-            </div>
-        </div>
     </div>
 </div>
