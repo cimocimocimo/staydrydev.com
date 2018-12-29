@@ -58,24 +58,33 @@ while (have_rows('page_content')) {
 
         $customers = format_brief_posts($row['customers'], 'medium_large');
 
+        // Used to store the percentage height of the tallest logo. We use that
+        // value to set the logo row height.
+        $max_height = (float) 0;
+
         foreach ($customers as $cust){
             $logo_metadata = wp_get_attachment_metadata(
                 get_post_thumbnail_id($cust->ID)
             );
 
-            $matched_dimentions = match_area_of_rectangles(
+            $matched_dimensions = match_area_of_rectangles(
                 37,
                 [
                     $logo_metadata['width'],
                     $logo_metadata['height']
                 ]
             );
-            $cust->logo_width_percent = $matched_dimentions[0];
-            $cust->logo_height_percent = $matched_dimentions[1];
+            $cust->logo_width_percent = $matched_dimensions[0];
+            $cust->logo_height_percent = $matched_dimensions[1];
+
+            if ($max_height < $matched_dimensions[1]) {
+                $max_height = $matched_dimensions[1];
+            }
         }
 
         // replace the original corp_customers for the row with the processed ones
         $row['customers'] = $customers;
+        $row['max_height'] = $max_height;
 
         break;
     }
