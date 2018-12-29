@@ -1,3 +1,27 @@
+.storefront-product-section {
+  ul.products {
+    &.columns-4 {
+      li.product {
+        @include susy-media (max-width $handheld) {
+          @include span(6 of 12);
+
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+        }
+
+        @include susy-media ($handheld $desktop) {
+          @include span(4 of 12);
+
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 .corporate-customer-logos {
   &__heading {
     text-align: center;
