@@ -14,12 +14,20 @@ namespace Tonik\Theme\App\Setup;
 */
 
 /**
- * Example action handler.
+ * Adds store currency to the price of the products
  *
- * @return integer
+ * @return string
  */
-function example_action()
-{
-    //
-}
-add_filter('excerpt_length', 'Tonik\Theme\App\Setup\example_action');
+add_action('woocommerce_price_format', function ($format, $currency_pos) {
+    $price_format_array = [
+        $format,
+        '&nbsp;', // separator
+        get_woocommerce_currency(), // currency
+    ];
+
+	if ( $currency_pos == 'right' ) {
+        $price_format_array = array_reverse($price_format_array);
+	}
+
+	return implode($price_format_array);
+}, 1, 2);
