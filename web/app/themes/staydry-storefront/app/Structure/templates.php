@@ -14,6 +14,7 @@ namespace Tonik\Theme\App\Structure;
 */
 
 use function Tonik\Theme\App\template;
+use function Tonik\Theme\App\theme;
 
 /**
  * Renders post thumbnail by its formats.
@@ -82,3 +83,17 @@ add_action('theme/header/end', 'Tonik\Theme\App\Structure\render_documentation_b
 add_action('storefront_before_header', function(){
     template('partials/before_header');
 });
+
+/**
+ * Renders the FAQ tab for the single product page.
+ */
+function render_single_product_faq_tab () {
+    // this function acts as the controller to fetch and format the data
+    // then it calls template function to display to the user.
+
+    $faqs = theme('faqs');
+
+    template('partials/single-product-faq-tab', [
+        'faqs' => $faqs,
+    ]);
+}

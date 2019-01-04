@@ -40,3 +40,23 @@ function modify_excerpt_length()
     return 60;
 }
 add_filter('excerpt_length', 'Tonik\Theme\App\Setup\modify_excerpt_length');
+
+/**
+ * Adds FAQ tab to the Single Product tabs.
+ *
+ * Each tab is an array containing title, callback and priority.
+ * @see woocommerce_default_product_tabs()
+ *
+ * @return array
+ */
+add_filter('woocommerce_product_tabs', function ($tabs) {
+
+    // Add the FAQ tab after reviews.
+    $tabs['faq'] = [
+        'title' => 'FAQs',
+        'priority' => 30,
+        'callback' => 'Tonik\Theme\App\Structure\render_single_product_faq_tab',
+    ];
+
+    return $tabs;
+});

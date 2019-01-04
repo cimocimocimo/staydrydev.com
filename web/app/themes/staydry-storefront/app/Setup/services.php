@@ -38,4 +38,27 @@ function bind_books_service()
         ]);
     });
 }
-add_action('init', 'Tonik\Theme\App\Setup\bind_books_service');
+// add_action('init', 'Tonik\Theme\App\Setup\bind_books_service');
+
+
+/**
+ * FAQ service handler.
+ *
+ * @return void
+ */
+add_action('init', function () {
+
+    /**
+     * Retrieves FAQ posts with an optional filter.
+     *
+     * @param \Tonik\Gin\Foundation\Theme $theme  Instance of the service container
+     * @param array $parameters  Parameters passed on service resolving
+     *
+     * @return \WP_Post[]
+     */
+    theme()->bind('faqs', function (Theme $theme, $parameters) {
+        return new WP_Query([
+            'post_type' => 'faq',
+        ]);
+    });
+});
