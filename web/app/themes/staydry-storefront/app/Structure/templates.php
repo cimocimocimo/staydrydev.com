@@ -91,7 +91,13 @@ function render_single_product_faq_tab () {
     // this function acts as the controller to fetch and format the data
     // then it calls template function to display to the user.
 
-    $faqs = theme('faqs');
+    global $post;
+
+    $faqs = theme('faqs', [
+        'filter' => [
+            'product_id' => $post->ID,
+        ],
+    ]);
 
     template('partials/single-product-faq-tab', [
         'faqs' => $faqs,

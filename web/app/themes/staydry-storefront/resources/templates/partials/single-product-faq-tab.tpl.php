@@ -1,4 +1,8 @@
 <div id="faq-tab">
     <h2>FAQs</h2>
-    <?php var_dump($faqs) ?>
+    <?php foreach ($faqs as $faq) : ?>
+        <h3><?= $faq->post_title ?></h3>
+        <?= apply_filters('the_content', $faq->post_content) ?>
+        <?php // var_dump($faq) ?>
+    <?php endforeach; ?>
 </div>

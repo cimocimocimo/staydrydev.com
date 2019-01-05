@@ -57,8 +57,38 @@ add_action('init', function () {
      * @return \WP_Post[]
      */
     theme()->bind('faqs', function (Theme $theme, $parameters) {
-        return new WP_Query([
+
+        // get all faqs
+        $faqs = get_posts([
             'post_type' => 'faq',
+            'posts_per_page' => -1,
         ]);
+
+        // apply filters
+        if ($parameters && array_key_exists('filter', $parameters)) {
+
+            // filter by product id
+            if ($parameters['filter']['product_id']) {
+                // need to pull all the FAQs and then filter by ACF field.
+                $faqs = array_filter($faqs, function ($faq) use ($parameters) {
+                    // Check this faq for the related product field
+                    $related_products = get_field('related_products', $faq->ID);
+
+                    foreach ($related_products as $id) {
+                        if ($id  == $parameters['filter']['product_id']) {
+                            return $faq;
+                        }
+                    }
+                });
+            }
+
+            // filter by faq_category
+        }
+
+        // return new WP_Query([
+        //     'post_type' => 'faq',
+        // ]);
+
+        return $faqs;
     });
 });
