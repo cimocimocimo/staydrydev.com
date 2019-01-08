@@ -105,5 +105,9 @@ add_action('init', function () {
             'not_found' => __('Not Found', $text_domain),
         ],
         'hierarchical' => true,
+        'show_admin_column' => true,
+        'public' => false,
+        'rewrite' => false,
+        'show_ui' => true,
     ]);
 });
