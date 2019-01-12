@@ -29,6 +29,7 @@
 
   &__logo-row {
     @extend .col-full;
+    @include clearfix;
 
     position: relative;
     text-align: center;
@@ -39,7 +40,7 @@
 
     margin: 0 auto ms(-1);
     max-width: 20rem;
-    float: none;
+    float: none !important;
     display: inline-block;
   }
 

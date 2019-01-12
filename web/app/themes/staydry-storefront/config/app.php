@@ -78,6 +78,7 @@ return [
         'Setup/filters.php',
         'Setup/supports.php',
         'Setup/services.php',
+        'Structure/acf_blocks.php',
         'Structure/navs.php',
         'Structure/widgets.php',
         'Structure/sidebars.php',

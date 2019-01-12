@@ -13,9 +13,13 @@
                 template('partials/homepage-hero', ['hero' => $hero,]);
             }
 
-            foreach ($blocks as $block) {
-                // load template partial for this layout
-                template('partials/block-' . $block->layout, ['block' => $block,]);
+            if ($blocks) {
+                foreach ($blocks as $block) {
+                    // load template partial for this layout
+                    template('partials/blocks/base', [
+                        'block' => $block,
+                    ]);
+                }
             }
 
 		?>

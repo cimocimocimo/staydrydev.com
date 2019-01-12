@@ -8,6 +8,7 @@ namespace Tonik\Theme\FAQ;
  */
 
 use function Tonik\Theme\App\{template, theme};
+use function Tonik\Theme\App\Structure\get_page_content_blocks;
 
 // get the faq categories
 $terms = get_terms([
@@ -60,6 +61,9 @@ foreach ($faqs_by_category as $category){
     }
 }
 
+$blocks = get_page_content_blocks();
+
 template('faq', [
     'faqs' => $faqs_by_category,
+    'blocks' => $blocks,
 ]);
