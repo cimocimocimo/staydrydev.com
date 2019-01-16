@@ -103,13 +103,14 @@ module.exports = merge({
       // we proxy the wordpress site directly.
       proxy: env('BROWSERSYNC_PROXY', 'http://staydrydev.local/'),
       open: env('BROWSERSYNC_OPEN', false),
-      reloadDelay: env('BROWSERSYNC_DELAY', 500),
+      reloadDebounce: env('BROWSERSYNC_DELAY', 500),
       files: [
         '*.php',
         'app/**/*.php',
         'resources/templates/**/*.php',
         'resources/assets/js/**/*.js',
-        'resources/assets/sass/**/*.{sass,scss}',
+        // 'resources/assets/sass/**/*.{sass,scss}',
+        'public/css/**/*.css',
         'resources/assets/images/**/*.{jpg,jpeg,png,gif,svg}',
         'resources/assets/fonts/**/*.{eot,ttf,woff,woff2,svg}'
       ]
