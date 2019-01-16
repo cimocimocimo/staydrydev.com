@@ -11,8 +11,12 @@
     "lint:sass": "stylelint resources/assets/sass/**/*.{scss,sass}",
     "lint": "npm run lint:js && npm run lint:sass"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gsap": "^2.0.2",
+    "scrollmagic": "^2.0.6"
+  },
   "devDependencies": {
+    "animate-sass": "^0.8.2",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.1.0",

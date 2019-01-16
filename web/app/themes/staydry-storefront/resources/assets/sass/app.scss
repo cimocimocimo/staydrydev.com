@@ -3,6 +3,9 @@
 @import '~susy/sass/susy';
 @import '~modularscale-sass/stylesheets/modularscale';
 
+$use-all: true;
+@import '~animate-sass/animate';
+
 // Variables & Mixins
 // =================================================
 @import 'variables';
