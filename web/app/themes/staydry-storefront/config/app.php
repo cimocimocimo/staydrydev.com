@@ -79,6 +79,7 @@ return [
         'Setup/supports.php',
         'Setup/services.php',
         'Structure/acf_blocks.php',
+        'Structure/class_sd_breadcrumb.php',
         'Structure/navs.php',
         'Structure/widgets.php',
         'Structure/sidebars.php',
