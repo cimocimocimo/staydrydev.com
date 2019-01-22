@@ -60,3 +60,8 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
 
     return $tabs;
 });
+
+/**
+ * Removes the storefront credit link in the footer
+ */
+add_filter('storefront_credit_link', '__return_false');
