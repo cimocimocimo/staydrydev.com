@@ -77,3 +77,9 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
  * Removes the storefront credit link in the footer
  */
 add_filter('storefront_credit_link', '__return_false');
+
+/**
+ * Disables Gutenberg editor globally.
+ */
+// TODO: Try disabling this once ACF has better support for Gutenberg.
+add_filter('use_block_editor_for_post', '__return_false', 10);
