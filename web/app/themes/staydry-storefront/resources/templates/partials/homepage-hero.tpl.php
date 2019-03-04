@@ -10,10 +10,5 @@
             <h2><?= $hero['headline'] ?></h2>
         </div>
         <h3><?= $hero['sub-heading'] ?></h3>
-        <ul>
-            <?php foreach ($hero['feature_bullets'] as $feature): ?>
-                <li><?= $feature['text'] ?></li>
-            <?php endforeach; ?>
-        </ul>
     </div>
 </div>

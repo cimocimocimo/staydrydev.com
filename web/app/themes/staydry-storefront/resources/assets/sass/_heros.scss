@@ -20,26 +20,15 @@
   &__content {
     margin-top: ms(0);
     margin-bottom: ms(0);
-
-    h2 {
-      // text-align: right;
-    }
-
-    h3,
-    ul {
-      display: none;
-    }
   }
 
-  @include susy-media ($handheld) {
-    h2,
-    h3 {
-      text-align: center;
-    }
+  h2,
+  h3 {
+    text-align: center;
+  }
 
-    h3 {
-      display: block;
-    }
+  h3 {
+    display: block;
   }
 
   @include susy-media ($handheld $desktop) {
@@ -78,19 +67,6 @@
 
     &__headline-desktop {
       display: block;
-    }
-
-    &__content,
-    &__image {
-      float: left;
-    }
-
-    &__image {
-      width: percentage(2/3);
-    }
-
-    &__content {
-      width: percentage(1/3);
     }
   }
 }
