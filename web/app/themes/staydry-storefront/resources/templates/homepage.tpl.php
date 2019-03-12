@@ -10,7 +10,7 @@
         <?php
 
             if ($hero) {
-                template('partials/homepage-hero', ['hero' => $hero,]);
+                template('partials/homepage-hero', $hero);
             }
 
             if ($blocks) {

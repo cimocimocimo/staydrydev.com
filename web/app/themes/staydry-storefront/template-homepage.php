@@ -21,6 +21,18 @@ use function Tonik\Theme\App\Structure\get_page_content_blocks;
 $hero = get_field('hero');
 $blocks = get_page_content_blocks();
 
+function castTypeFeatures (&$features) {
+    $floatKeys = ['horizontal_position', 'vertical_position'];
+    foreach ($features as &$feature) {
+        foreach ($floatKeys as $key) {
+            $feature[$key] = (float) $feature[$key];
+        }
+    }
+}
+
+castTypeFeatures($hero['problem_features']);
+castTypeFeatures($hero['solution_features']);
+
 template('homepage', [
     'hero' => $hero,
     'blocks' => $blocks,
