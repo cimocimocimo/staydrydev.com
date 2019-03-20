@@ -8,23 +8,27 @@
         <h2><?= $headline ?></h2>
     </div>
 
-    <?= template('partials/homepage-hero-panel', [
-        'class' => 'homepage-hero__problem',
-            'heading' => 'The<br>Problems',
-            'image' => $problem_image,
-            'features' => $problem_features,
-            'icon_path' => 'images/red-x.svg',
-            'feature_class' => 'problem',
-        ]) ?>
+    <div class="homepage-hero__panels">
 
-    <?= template('partials/homepage-hero-panel', [
-        'class' => 'homepage-hero__solution',
-            'heading' => 'Our<br>Solution',
-            'image' => $solution_image,
-            'features' => $solution_features,
-            'icon_path' => 'images/green-check.svg',
-            'feature_class' => 'solution',
-        ]) ?>
+        <?= template('partials/homepage-hero-panel', [
+            'class' => 'homepage-hero__problem',
+                'heading' => 'The<br>Problems',
+                'image' => $problem_image,
+                'features' => $problem_features,
+                'icon_path' => 'images/red-x.svg',
+                'feature_class' => 'problem',
+            ]) ?>
+
+        <?= template('partials/homepage-hero-panel', [
+            'class' => 'homepage-hero__solution',
+                'heading' => 'Our<br>Solution',
+                'image' => $solution_image,
+                'features' => $solution_features,
+                'icon_path' => 'images/green-check.svg',
+                'feature_class' => 'solution',
+            ]) ?>
+
+    </div>
 
     <div class="homepage-hero__headline-handheld">
         <h2><?= $headline ?></h2>
@@ -32,5 +36,4 @@
     <div class="homepage-hero__subheading">
         <h3><?= $subheading ?></h3>
     </div>
-</div>
 </div>

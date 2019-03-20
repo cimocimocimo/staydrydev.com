@@ -43,6 +43,10 @@ function get_page_content_blocks () {
             'template-' . $template,
         ];
 
+        if (array_key_exists('extra_classes', $row->meta) && $row->meta['extra_classes']) {
+            $block_classes = array_merge($block_classes, explode(' ', $row->meta['extra_classes']));
+        }
+
         // Additional row processing
         switch ($layout) {
 

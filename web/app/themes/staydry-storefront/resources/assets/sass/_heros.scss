@@ -8,18 +8,19 @@
 .homepage-hero {
   @include clearfix;
 
-  margin-top: ms(1);
+  margin-top: ms(0);
+	margin-left: ms(2);
+	margin-right: ms(2);
   padding-bottom: ms(-1);
-  border-bottom: 1px solid rgba(0,0,0,0.25);
   margin-bottom: ms(4);
 
   &__headline-desktop {
     display: none;
   }
 
-  &__content {
+  &__panels {
     margin-top: ms(0);
-    margin-bottom: ms(0);
+    margin-bottom: ms(2);
   }
 
   &__headline-desktop,
@@ -170,4 +171,89 @@
 .problem-feature .stroke {
   -webkit-text-stroke: 0.3em darken($red, 12%);
   color: $red;
+}
+
+/*****************************************************************************/
+/*                               Product Blocks                              */
+/*****************************************************************************/
+
+.block-products_block {
+  padding: ms(2);
+
+  .block-headings {
+    margin-bottom: ms(1);
+
+    * {
+      text-align: center;
+    }
+
+    .section-title,
+    h3 {
+      line-height: 1;
+    }
+
+    h2.section-title {
+      font-size: 2.4rem;
+      margin-bottom: 0;
+    }
+
+    h3 {
+      border-top: none;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: ms(-1);
+    }
+
+    p {
+      line-height: 1.2;
+      font-size: 1rem;
+      margin: ms(-1) auto 0;
+      max-width: 80%;
+    }
+  }
+
+  .products .product {
+    .price {
+      letter-spacing: 0.4px;
+    }
+
+    .add_to_cart_button {
+      text-shadow: 0 1px 3px rgba($black, 0.4);
+      border: 1px solid darken($green, 2.5%);
+      background-color: $green;
+      color: $white;
+      letter-spacing: 0.2px;
+      margin: 0;
+      padding: ms(-1) ms(0);
+      line-height: 1;
+      width: 100%;
+    }
+  }
+}
+
+.color-scheme-blue-negative {
+  background: $blue-light;
+
+  .block-headings {
+    * {
+    }
+  }
+
+  .products .product {
+    .price {
+      color: $white;
+    }
+  }
+
+  * {
+    color: $white;
+    text-shadow: 0 1px 3px rgba($black, 0.4);
+  }
+
+  .woocommerce-loop-product__link > img,
+  .add_to_cart_button {
+    box-shadow: 0 1px 3px rgba($black, 0.4);
+  }
+
 }
