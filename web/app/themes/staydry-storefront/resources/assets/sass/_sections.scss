@@ -1,4 +1,53 @@
-.storefront-product-section {
+/*****************************************************************************/
+/*                               Product Blocks                              */
+/*****************************************************************************/
+
+$block-vertical-spacing: 4;
+
+%button-base {
+  text-shadow: 0 1px 3px rgba($black, 0.4);
+  border: 1px solid darken($green, 2.5%);
+  background-color: $green;
+  color: $white;
+  letter-spacing: 0.2px;
+  margin: 0;
+  padding: ms(-1) ms(0);
+  line-height: 1;
+}
+
+.products-block {
+  margin: ms($block-vertical-spacing) ms(2);
+  padding: 0;
+
+  &__headings {
+    margin-bottom: ms(1);
+
+    * {
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.2;
+      font-size: 1rem;
+      margin: ms(-1) auto 0;
+      max-width: 80%;
+    }
+  }
+
+  &__heading {
+    font-size: 2.4rem;
+    margin-bottom: 0;
+  }
+
+  &__subheading {
+    line-height: 1;
+    border-top: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: ms(-1);
+  }
+
   ul.products {
     &.columns-4 {
       li.product {
@@ -17,12 +66,55 @@
             margin-right: 0;
           }
         }
+
       }
+
+      .product {
+        .price {
+          letter-spacing: 0.4px;
+        }
+
+        .add_to_cart_button {
+          @extend %button-base;
+
+          width: 100%;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Color Schemes
+
+  &.color-scheme-blue-negative {
+    background: $blue-light;
+    margin: 0;
+    padding: ms($block-vertical-spacing) ms(2);
+
+    .products .product {
+      .price {
+        color: $white;
+      }
+    }
+
+    * {
+      color: $white;
+      text-shadow: 0 1px 3px rgba($black, 0.4);
+    }
+
+    .woocommerce-loop-product__link > img,
+    .add_to_cart_button {
+      box-shadow: 0 1px 3px rgba($black, 0.4);
     }
   }
 }
 
 .corporate-customers-block {
+  margin: ms($block-vertical-spacing) ms(2);
+
   &__heading {
     text-align: center;
   }
@@ -77,4 +169,25 @@
       margin: 0 auto ms(1);
     }
   }
+}
+
+.header-and-text-block {
+  margin: ms($block-vertical-spacing) ms(2);
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__image {
+    margin-bottom: ms(1);
+  }
+
+  .button {
+    @extend %button-base;
+  }
+}
+
+.horizontal-rule-block hr {
+  max-width: 60%;
+  margin: ms($block-vertical-spacing) auto;
 }
