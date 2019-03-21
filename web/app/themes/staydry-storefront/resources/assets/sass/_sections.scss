@@ -172,6 +172,8 @@ $block-vertical-spacing: 4;
 }
 
 .header-and-text-block {
+  $self: &;
+
   margin: ms($block-vertical-spacing) ms(2);
 
   &__heading {
@@ -184,6 +186,13 @@ $block-vertical-spacing: 4;
 
   .button {
     @extend %button-base;
+  }
+
+  &--align-center {
+    #{$self}__heading,
+    #{$self}__content {
+      text-align: center;
+    }
   }
 }
 

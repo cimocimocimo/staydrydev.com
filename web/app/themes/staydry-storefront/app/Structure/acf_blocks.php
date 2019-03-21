@@ -82,7 +82,7 @@ function get_page_content_blocks () {
 
         case 'header-and-text-block':
             $block_classes = array_merge($block_classes, [
-                $block_main_class . '--align-heading-' . $row->align_heading,
+                $block_main_class . '--align-' . $row->align_content,
                 $block_main_class . '--' . $row->color_scheme . '-color-scheme',
             ]);
             if ($row->image) {
