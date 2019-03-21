@@ -229,6 +229,10 @@
       line-height: 1;
       width: 100%;
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
