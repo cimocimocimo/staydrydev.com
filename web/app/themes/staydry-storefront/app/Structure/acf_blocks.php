@@ -34,9 +34,24 @@ function get_page_content_blocks () {
         // call first to setup the loop, save the row data, cast as object
         $row = (object) the_row(true);
         $layout = get_row_layout();
-        $template = $layout . '-' . $row->meta['template'];
+
+        if (!isset($row->meta)) {
+            $row->meta = [];
+        }
+
+        if (isset($row->meta['template'])) {
+            $template = $layout . '-' . $row->meta['template'];
+        } else {
+            $template = $layout;
+        }
+
         $row->meta['style'] = false;
-        $block_main_class = 'block-' . $layout;
+
+        if (!isset($row->heading)) {
+            $row->heading = false;
+        }
+
+        $block_main_class = $layout;
         $block_classes = [
             $block_main_class,
             'storefront-section',
@@ -50,17 +65,17 @@ function get_page_content_blocks () {
         // Additional row processing
         switch ($layout) {
 
-        case 'products_block':
+        case 'products-block':
             $block_classes[] = 'storefront-product-section';
             process_product_block($row);
             break;
 
-        case 'corporate_customers_block':
+        case 'corporate-customers-block':
             $block_classes[] = 'corporate-customer-logos';
             process_corporate_customers_block($row);
             break;
 
-        case 'header_and_text_block':
+        case 'header-and-text-block':
             $block_classes = array_merge($block_classes, [
                 $block_main_class . '--align-heading-' . $row->align_heading,
                 $block_main_class . '--' . $row->color_scheme . '-color-scheme',

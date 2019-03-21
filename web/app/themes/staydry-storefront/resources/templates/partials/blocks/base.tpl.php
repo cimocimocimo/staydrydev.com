@@ -4,7 +4,9 @@
 
 ?>
 <section class="<?= $block->meta->classes ?>"
-    aria-label="<?= $block->heading ?>"
+    <?php if ($block->heading) : ?>
+    aria-label="<?= $block->heading ?? '' ?>"
+    <?php endif; ?>
     <?php if ($block->meta->style) : ?>
     style="<?= $block->meta->style ?>"
     <?php endif; ?>>
