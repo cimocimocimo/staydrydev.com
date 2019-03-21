@@ -3,6 +3,11 @@
         <?= $block->meta->class ?>__heading">
         <h3 class="section-title"><?= $block->heading ?></h3>
     </div>
+    <?php if ($block->image) : ?>
+        <div class="<?= $block->meta->class ?>__image">
+            <img class="my_class" <?= $block->image_src_string ?> alt="text" />
+        </Div>
+    <?php endif; ?>
     <div class="<?= $block->meta->class ?>__column
         <?= $block->meta->class ?>__content">
         <?= $block->content ?>

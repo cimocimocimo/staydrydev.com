@@ -16,6 +16,7 @@ namespace Tonik\Theme\App\Structure;
 
 use function Tonik\Theme\App\config;
 use function Tonik\Theme\App\{match_area_of_rectangles, format_brief_posts};
+use function Tonik\Theme\App\acf_responsive_image;
 
 /**
  * Fetches and processes the page content blocks.
@@ -51,6 +52,10 @@ function get_page_content_blocks () {
             $row->heading = false;
         }
 
+        if (!isset($row->image)) {
+            $row->image = false;
+        }
+
         $block_main_class = $layout;
         $block_classes = [
             $block_main_class,
@@ -80,6 +85,9 @@ function get_page_content_blocks () {
                 $block_main_class . '--align-heading-' . $row->align_heading,
                 $block_main_class . '--' . $row->color_scheme . '-color-scheme',
             ]);
+            if ($row->image) {
+                $row->image_src_string = acf_responsive_image($row->image['id'], 'full', '900px');
+            }
             if ($row->background_image){
                 $row->meta['style'] = 'background-image:url(' . $block->background_image . ');';
             }
