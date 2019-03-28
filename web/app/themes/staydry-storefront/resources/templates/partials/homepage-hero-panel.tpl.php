@@ -3,6 +3,7 @@
     use function Tonik\Theme\App\asset_path;
 
 ?><div class="<?= $class ?>">
+    <div class="<?= $class ?>-heading-border"></div>
     <div class="<?= $class ?>-heading">
         <h3><?= $heading ?></h3>
     </div>

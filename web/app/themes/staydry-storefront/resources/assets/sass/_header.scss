@@ -65,12 +65,16 @@
   }
 }
 
-
 .cap-menu-default {
   border: 1px solid #eeeeee;
 }
 
-
 .site-branding {
+  @include susy-media (max-width 359px) {
+    width: 170px;
 
+    img {
+      width: 100%;
+    }
+  }
 }
