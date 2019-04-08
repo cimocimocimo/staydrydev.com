@@ -94,15 +94,20 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({ minimize: !isdev }),
     new ExtractTextPlugin(config.outputs.css),
     new CleanPlugin(config.paths.public, { root: config.paths.root }),
-    new CopyPlugin([{
-      context: config.paths.images,
-      from: {
-        glob: `${config.paths.images}/**/*`,
-        flatten: true,
-        dot: false
-      },
-      to: config.outputs.image.filename,
-    }]),
+    new CopyPlugin([
+      {
+        context: config.paths.images,
+        from: {
+          glob: `${config.paths.images}/**/*`,
+          flatten: true,
+          dot: false
+        },
+        to: config.outputs.image.filename,
+      },{
+        from: config.paths.javascriptVendor,
+        to: config.outputs.javascriptVendor.path
+      }
+    ]),
   ]
 }
 

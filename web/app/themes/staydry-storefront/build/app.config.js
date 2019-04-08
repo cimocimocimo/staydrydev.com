@@ -17,6 +17,7 @@ module.exports = merge({
     fonts: path.resolve(__dirname, '../resources/assets/fonts'),
     images: path.resolve(__dirname, '../resources/assets/images'),
     javascript: path.resolve(__dirname, '../resources/assets/js'),
+    javascriptVendor: path.resolve(__dirname, '../resources/assets/js/vendor'),
     relative: '../',
     external: /node_modules|bower_components/
   },
@@ -49,6 +50,10 @@ module.exports = merge({
 
     javascript: {
       filename: env('FILENAME_JAVASCRIPT', 'js/[name].js')
+    },
+
+    javascriptVendor: {
+      path: 'js/'
     },
 
     external: {

@@ -31,6 +31,7 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
  * @return void
  */
 function register_scripts() {
+    wp_enqueue_script('modernizr', asset_path('js/modernizr-custom.min.js'));
     wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
