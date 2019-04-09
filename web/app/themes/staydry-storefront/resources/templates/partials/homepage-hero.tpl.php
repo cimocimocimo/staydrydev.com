@@ -4,7 +4,6 @@
 
 ?>
 <div class="homepage-hero">
-    <div><button id="run-animation">Run Animation</button></div>
     <div class="homepage-hero__headline-desktop">
         <h2><?= $headline ?></h2>
     </div>

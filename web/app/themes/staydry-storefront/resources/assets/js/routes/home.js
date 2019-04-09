@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import TweenMax from 'gsap/TweenMax'
-import TimelineLite from 'gsap/TimelineLite'
+// import TimelineLite from 'gsap/TimelineLite'
 // import 'gsap/CSSPlugin' // only needed if using TweenLite
 // import 'gsap/EasePack'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
@@ -36,25 +36,60 @@ export default {
     // run the GSAP test init code
     // initGSAPTest();
 
-    // JavaScript to be fired on the home page
-    console.log('hello homepage.')
+    var $hero = $('.homepage-hero'),
+        $panels = $('.homepage-hero__panels > div'),
+        $problem = $('.homepage-hero__problem'),
+        $solution = $('.homepage-hero__solution'),
+        $features = $hero.find('.problem-feature, .solution-feature'),
+        $problemFeatures = $hero.find('.problem-feature'),
+        $solutionFeatures = $hero.find('.solution-feature'),
+        timeline = new TimelineMax();
 
-    var $button = $('#run-animation');
-
-    var $hero = $('.homepage-hero');
-
-    var $features = $hero.find('.problem-feature, .solution-feature');
-
-    // $features.hide();
-
-    TweenMax.set($features, {visibility: 'hidden'});
-
-    $button.click(function(event){
-      event.preventDefault()
-
-      console.log('button clicked.');
-      TweenMax.staggerFrom($features, 1, {scale: .5, y: '-=40px', autoAlpha: 0, ease:Back.easeOut}, 0.25);
-    })
+    timeline
+      .from(
+        $panels,
+        0.5,
+        {
+          scale: 0.5, autoAlpha: 0
+        })
+      .staggerFromTo(
+        $problemFeatures,
+        1,
+        {
+          scale: .5,
+          y: '-=40px',
+          autoAlpha: 0
+        },
+        {
+          scale: 1,
+          y: 0,
+          autoAlpha: 1,
+          ease:Back.easeOut
+        },
+        0.25)
+      .add('swapStart')
+      .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeOut}, 'swapStart')
+      .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeOut}, 'swapStart')
+      .add('swapMid')
+      .set($problem, {zIndex: 0})
+      .set($solution, {zIndex: 10})
+      .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeIn}, 'swapMid')
+      .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeIn}, 'swapMid')
+      .staggerFromTo(
+        $solutionFeatures,
+        1,
+        {
+          scale: .5,
+          y: '-=40px',
+          autoAlpha: 0
+        },
+        {
+          scale: 1,
+          y: 0,
+          autoAlpha: 1,
+          ease:Back.easeOut
+        },
+        0.25);
 
     // init controller
     var controller = new ScrollMagic.Controller();
