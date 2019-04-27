@@ -6,35 +6,13 @@ import TweenMax from 'gsap/TweenMax'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
-function initGSAPTest(){
-  console.log('GSAP Init Ready');
-  // create a set of floating buttons to control the animations
-  var $controls = $('<div style="position: fixed; z-index: 9999; top: 40px; right: 20px;" class="gsap-debug-controls"></div>'),
-      buttonNames = ['play', 'pause', 'reverse', 'restart'];
 
-  buttonNames.forEach(function(element){
-    $controls.append($('<button style="display: block; margin-bottom: 10px; text-align: center; width: 100%; border: 1px solid black;" id="control-' + element + '">' + element + '</button>'));
   });
 
-  $('body').append($controls);
-
-  var $box1 = $('#box1'),
-      $box2 = $('#box2');
-
-  var $play = $controls.find('#control-play');
-  $play.click(function(){
-    var tl = new TimelineLite();
-    tl
-      .to($box1, 1, {x: 500, ease: Back.easeOut})
-      .to($box2, 1, {x: 500, ease: Back.easeOut}, '-=0.75');
-  });
 }
 
 export default {
   init() {
-
-    // run the GSAP test init code
-    // initGSAPTest();
 
     var $hero = $('.homepage-hero'),
         $panels = $('.homepage-hero__panels > div'),
