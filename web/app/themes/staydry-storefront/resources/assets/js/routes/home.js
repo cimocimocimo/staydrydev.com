@@ -6,13 +6,36 @@ import TweenMax from 'gsap/TweenMax'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
+function createFeatureTimeline ($features, mainTimeline) {
+  var timeline = new TimelineMax({paused: true});
 
+  timeline.add(function () {
+    mainTimeline.pause();
+  }).staggerFromTo(
+    $features, 1,
+    {scale: .5, y: '-=40px',autoAlpha: 0},
+    {scale: 1, y: 0, autoAlpha: 1, ease:Back.easeOut},
+    0.25
+  ).add(function () {
+    mainTimeline.play();
   });
 
+  return function () {
+    timeline.play();
+  }
 }
 
 export default {
   init() {
+
+    // TODO: remove in production
+    var $controls = $('.animation-controls'),
+        $play = $('#animation-play'),
+        $pause = $('#animation-pause'),
+        $resume = $('#animation-resume'),
+        $reverse = $('#animation-reverse'),
+        $restart = $('#animation-restart');
+
 
     var $hero = $('.homepage-hero'),
         $panels = $('.homepage-hero__panels > div'),
@@ -21,7 +44,7 @@ export default {
         $features = $hero.find('.problem-feature, .solution-feature'),
         $problemFeatures = $hero.find('.problem-feature'),
         $solutionFeatures = $hero.find('.solution-feature'),
-        timeline = new TimelineMax();
+        timeline = new TimelineMax({paused: true});
 
     timeline
       .from(
@@ -30,44 +53,51 @@ export default {
         {
           scale: 0.5, autoAlpha: 0
         })
-      .staggerFromTo(
-        $problemFeatures,
-        1,
-        {
-          scale: .5,
-          y: '-=40px',
-          autoAlpha: 0
-        },
-        {
-          scale: 1,
-          y: 0,
-          autoAlpha: 1,
-          ease:Back.easeOut
-        },
-        0.25)
+      .add(createFeatureTimeline($problemFeatures, timeline))
       .add('swapStart')
-      .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeOut}, 'swapStart')
-      .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeOut}, 'swapStart')
+      .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeInOut}, 'swapStart')
+      .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeInOut}, 'swapStart')
       .add('swapMid')
       .set($problem, {zIndex: 0})
       .set($solution, {zIndex: 10})
-      .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeIn}, 'swapMid')
-      .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeIn}, 'swapMid')
-      .staggerFromTo(
-        $solutionFeatures,
-        1,
-        {
-          scale: .5,
-          y: '-=40px',
-          autoAlpha: 0
-        },
-        {
-          scale: 1,
-          y: 0,
-          autoAlpha: 1,
-          ease:Back.easeOut
-        },
-        0.25);
+      .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut}, 'swapMid')
+      .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut}, 'swapMid')
+      .add(createFeatureTimeline($solutionFeatures, timeline))
+      .add('swapEnd')
+      .add(wirePanelClickHandlers);
+
+    function wirePanelClickHandlers () {
+      $problem.click(function () {
+        timeline.tweenTo('swapStart');
+      });
+      $solution.click(function () {
+        timeline.tweenTo('swapEnd');
+      });
+    }
+
+    // TODO: remove in production
+    $play.on('click', function(){
+      timeline.play();
+      $(this).hide();
+      $pause.show();
+    });
+    $pause.hide();
+    $pause.on('click', function(){
+      timeline.pause();
+      $(this).hide();
+      $play.show();
+    });
+    $resume.hide()
+    $resume.on('click', function(){
+      timeline.resume();
+    });
+    $reverse.on('click', function(){
+      timeline.reverse();
+    });
+    $restart.on('click', function(){
+      timeline.restart();
+    });
+
 
     // init controller
     var controller = new ScrollMagic.Controller();
