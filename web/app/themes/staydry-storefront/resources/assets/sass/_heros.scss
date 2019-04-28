@@ -51,6 +51,8 @@
   }
 
   &__panels {
+    @include clearfix;
+
     position: relative;
     margin-top: 0;
     margin-bottom: ms(2);
@@ -210,8 +212,8 @@
 
     &__problem,
     &__solution {
-      position: relative;
-      display: inline-block;
+      // position: relative;
+      // display: inline-block;
     }
   }
 }
