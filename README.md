@@ -1,3 +1,10 @@
+Working on making the animation responsive. Check this page for some possible
+code to use.
+https://greensock.com/forums/topic/16942-responsive-animation-using-fixed-values/
+
+I'm going to use two related animations for desktop and mobile.
+
+
 # [Bedrock](https://roots.io/bedrock/)
 [![Packagist](https://img.shields.io/packagist/v/roots/bedrock.svg?style=flat-square)](https://packagist.org/packages/roots/bedrock)
 [![Build Status](https://img.shields.io/travis/roots/bedrock.svg?style=flat-square)](https://travis-ci.org/roots/bedrock)

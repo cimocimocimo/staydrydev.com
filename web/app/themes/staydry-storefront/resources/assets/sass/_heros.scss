@@ -56,8 +56,37 @@
     position: relative;
     margin-top: 0;
     margin-bottom: ms(2);
+    padding-top: 56.25%;
   }
 
+  &__panels-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  &__stage-desktop {
+    display: none;
+  }
+
+  &__stage-mobile {
+    display: block;
+  }
+
+  @include susy-media ($desktop) {
+    &__stage-desktop {
+      display: block;
+    }
+
+    &__stage-mobile {
+      display: none;
+    }
+  }
+}
+
+.panel {
   &__problem,
   &__solution {
     transform: scale(0.9);

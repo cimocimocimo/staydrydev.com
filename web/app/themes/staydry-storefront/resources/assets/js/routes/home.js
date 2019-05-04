@@ -20,27 +20,29 @@ function createFeatureTimeline ($features, mainTimeline) {
     mainTimeline.play();
   });
 
-  return function () {
-    timeline.play();
-  }
+  timeline.play();
+}
+
+function createTimeline () {
+
+}
+
+function wirePanelClickHandlers ($problem, $solution, timeline) {
+  $problem.click(function () {
+    timeline.tweenTo('swapStart');
+  });
+  $solution.click(function () {
+    timeline.tweenTo('swapEnd');
+  });
 }
 
 export default {
   init() {
 
-    // TODO: remove in production
-    var $controls = $('.animation-controls'),
-        $play = $('#animation-play'),
-        $pause = $('#animation-pause'),
-        $resume = $('#animation-resume'),
-        $reverse = $('#animation-reverse'),
-        $restart = $('#animation-restart');
-
-
     var $hero = $('.homepage-hero'),
-        $panels = $('.homepage-hero__panels > div'),
-        $problem = $('.homepage-hero__problem'),
-        $solution = $('.homepage-hero__solution'),
+        $panels = $('.panel__problem, .panel__solution'),
+        $problem = $('.panel__problem'),
+        $solution = $('.panel__solution'),
         $features = $hero.find('.problem-feature, .solution-feature'),
         $problemFeatures = $hero.find('.problem-feature'),
         $solutionFeatures = $hero.find('.solution-feature'),
@@ -53,7 +55,7 @@ export default {
         {
           scale: 0.5, autoAlpha: 0
         })
-      .add(createFeatureTimeline($problemFeatures, timeline))
+      .call(createFeatureTimeline, [$problemFeatures, timeline])
       .add('swapStart')
       .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeInOut}, 'swapStart')
       .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeInOut}, 'swapStart')
@@ -62,20 +64,18 @@ export default {
       .set($solution, {zIndex: 10})
       .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut}, 'swapMid')
       .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut}, 'swapMid')
-      .add(createFeatureTimeline($solutionFeatures, timeline))
+      .call(createFeatureTimeline, [$solutionFeatures, timeline])
       .add('swapEnd')
-      .add(wirePanelClickHandlers);
+      .call(wirePanelClickHandlers, [$problem, $solution, timeline]);
 
-    function wirePanelClickHandlers () {
-      $problem.click(function () {
-        timeline.tweenTo('swapStart');
-      });
-      $solution.click(function () {
-        timeline.tweenTo('swapEnd');
-      });
-    }
 
     // TODO: remove in production
+    var $controls = $('.animation-controls'),
+        $play = $('#animation-play'),
+        $pause = $('#animation-pause'),
+        $resume = $('#animation-resume'),
+        $reverse = $('#animation-reverse'),
+        $restart = $('#animation-restart');
     $play.on('click', function(){
       timeline.play();
       $(this).hide();
@@ -121,10 +121,6 @@ export default {
       .on("progress", function (e) {
         console.log(e.progress)
       });
-
-    console.log('hey');
-
-
   },
   finalize() {
     // JavaScript to be fired on the home page, after the init JS

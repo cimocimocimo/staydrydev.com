@@ -18,26 +18,58 @@
         <h2><?= $headline ?></h2>
     </div>
 
-    <div class="homepage-hero__panels">
+    <div class="homepage-hero__stage-desktop">
+        <h2>Desktop Stage</h2>
+        <div class="homepage-hero__panels">
+            <div class="homepage-hero__panels-inner">
 
-        <?= template('partials/homepage-hero-panel', [
-            'class' => 'homepage-hero__problem',
-                'heading' => 'The<br>Problems',
-                'image' => $problem_image,
-                'features' => $problem_features,
-                'icon_path' => 'images/red-x.svg',
-                'feature_class' => 'problem',
-            ]) ?>
+                <?= template('partials/homepage-hero-panel', [
+                    'class' => 'panel__problem',
+                        'heading' => 'The<br>Problems',
+                        'image' => $problem_image,
+                        'features' => $problem_features,
+                        'icon_path' => 'images/red-x.svg',
+                        'feature_class' => 'problem',
+                    ]) ?>
 
-        <?= template('partials/homepage-hero-panel', [
-            'class' => 'homepage-hero__solution',
-                'heading' => 'Our<br>Solution',
-                'image' => $solution_image,
-                'features' => $solution_features,
-                'icon_path' => 'images/green-check.svg',
-                'feature_class' => 'solution',
-            ]) ?>
+                <?= template('partials/homepage-hero-panel', [
+                    'class' => 'panel__solution',
+                        'heading' => 'Our<br>Solution',
+                        'image' => $solution_image,
+                        'features' => $solution_features,
+                        'icon_path' => 'images/green-check.svg',
+                        'feature_class' => 'solution',
+                    ]) ?>
 
+            </div>
+        </div>
+    </div>
+    <div class="homepage-hero__stage-mobile">
+        <h2>Mobile Stage</h2>
+
+        <div class="homepage-hero__panels">
+            <div class="homepage-hero__panels-inner">
+
+                <?= template('partials/homepage-hero-panel', [
+                    'class' => 'panel__problem',
+                        'heading' => 'The<br>Problems',
+                        'image' => $problem_image,
+                        'features' => $problem_features,
+                        'icon_path' => 'images/red-x.svg',
+                        'feature_class' => 'problem',
+                    ]) ?>
+
+                <?= template('partials/homepage-hero-panel', [
+                    'class' => 'panel__solution',
+                        'heading' => 'Our<br>Solution',
+                        'image' => $solution_image,
+                        'features' => $solution_features,
+                        'icon_path' => 'images/green-check.svg',
+                        'feature_class' => 'solution',
+                    ]) ?>
+
+            </div>
+        </div>
     </div>
 
     <div class="homepage-hero__headline-handheld">
