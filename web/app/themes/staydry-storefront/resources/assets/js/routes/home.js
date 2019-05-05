@@ -20,7 +20,9 @@ function createFeatureTimeline ($features, mainTimeline) {
     mainTimeline.play();
   });
 
-  timeline.play();
+  return function () {
+    timeline.play();
+  }
 }
 
 function createTimeline () {
@@ -55,7 +57,7 @@ export default {
         {
           scale: 0.5, autoAlpha: 0
         })
-      .call(createFeatureTimeline, [$problemFeatures, timeline])
+      .add(createFeatureTimeline($problemFeatures, timeline))
       .add('swapStart')
       .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeInOut}, 'swapStart')
       .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeInOut}, 'swapStart')
@@ -64,7 +66,7 @@ export default {
       .set($solution, {zIndex: 10})
       .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut}, 'swapMid')
       .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut}, 'swapMid')
-      .call(createFeatureTimeline, [$solutionFeatures, timeline])
+      .add(createFeatureTimeline($solutionFeatures, timeline))
       .add('swapEnd')
       .call(wirePanelClickHandlers, [$problem, $solution, timeline]);
 
