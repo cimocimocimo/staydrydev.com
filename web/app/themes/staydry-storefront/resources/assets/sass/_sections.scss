@@ -120,7 +120,6 @@ $block-vertical-spacing: 4;
   }
 
   &__logo-row {
-    @extend .col-full;
     @include clearfix;
 
     position: relative;
