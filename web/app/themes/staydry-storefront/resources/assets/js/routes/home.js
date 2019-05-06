@@ -76,10 +76,15 @@ var heroAnimation = {
     if (isDesktop) {
       timeline
         .add('swapStart')
-        .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut})
-        .set($problem, {zIndex: 0})
-        .set($solution, {zIndex: 10})
-        .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut})
+        .add('swapMid', '+=0.75')
+        .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut}, 'swapStart')
+        .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut}, 'swapStart')
+        .to($problem, 0.75, {left: '-2%', ease: Power2.easeIn}, 'swapStart')
+        .to($solution, 0.75, {right: '-2%', ease: Power2.easeIn}, 'swapStart')
+        .set($problem, {zIndex: 0}, 'swapMid')
+        .set($solution, {zIndex: 10}, 'swapMid')
+        .to($problem, 0.75, {left: '0%', ease: Power2.easeOut}, 'swapMid')
+        .to($solution, 0.75, {right: '0%', ease: Power2.easeOut}, 'swapMid')
         .add(function () {
           solutionFeaturesTimeline.play()
         })
