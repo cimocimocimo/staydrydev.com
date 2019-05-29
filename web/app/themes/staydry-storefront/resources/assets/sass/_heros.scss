@@ -71,6 +71,11 @@
   }
 
   @include susy-media ($desktop) {
+    &__panels {
+      width: 80%;
+      margin: 0 auto;
+    }
+
     &__stage-desktop {
       display: block;
     }
@@ -84,9 +89,7 @@
 .panel {
   &__problem,
   &__solution {
-    transform: scale(0.9);
-    max-width: 680px;
-    width: 100%;
+    width: 90%;
     box-shadow: 0 5px 15px rgba($black,0.9);
   }
 
@@ -224,8 +227,7 @@
 
     &__problem,
     &__solution {
-      // position: relative;
-      // display: inline-block;
+      width: 65%;
     }
   }
 }
