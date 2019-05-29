@@ -18,7 +18,7 @@
         <h2><?= $headline ?></h2>
     </div>
 
-    <div class="homepage-hero__stage-desktop col-full">
+    <div class="homepage-hero__stage-desktop">
         <div class="homepage-hero__panels">
 
             <?= template('partials/homepage-hero-panel', [

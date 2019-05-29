@@ -26,12 +26,15 @@
 .homepage-hero {
   @include clearfix;
 
-  margin-top: 0;
-  padding-top: 0;
+  // position the homepage hero over the header so the drop-shadow shows over
+  // the header.
+  position: relative;
+  z-index: 1000;
+
   margin-left: ms(2);
   margin-right: ms(2);
-  padding-bottom: ms(-1);
   margin-bottom: ms(4);
+  padding-bottom: ms(-1);
 
   &__headline-desktop {
     display: none;
@@ -89,7 +92,7 @@
 .panel {
   &__problem,
   &__solution {
-    width: 90%;
+    width: 80%;
     box-shadow: 0 5px 15px rgba($black,0.9);
   }
 
@@ -97,7 +100,7 @@
     float: left;
     position: relative;
     transform-origin: left;
-    transform: scale(0.9);
+    transform: scale(1);
     z-index: 10;
   }
 
@@ -105,7 +108,7 @@
     position: absolute;
     right: 0;
     transform-origin: right;
-    transform: scale(0.7);
+    transform: scale(0.8);
     z-index: 0;
   }
 
@@ -341,12 +344,14 @@
   }
 }
 
-.solution-feature .stroke {
-  -webkit-text-stroke: 0.3em darken($green, 12%);
-  color: $green;
-}
+.stroke {
+  .solution-feature & {
+    -webkit-text-stroke: 0.3em darken($green, 12%);
+    color: $green;
+  }
 
-.problem-feature .stroke {
-  -webkit-text-stroke: 0.3em darken($red, 12%);
-  color: $red;
+  .problem-feature & {
+    -webkit-text-stroke: 0.3em darken($red, 12%);
+    color: $red;
+  }
 }

@@ -92,13 +92,13 @@ var heroAnimation = {
     } else {
       timeline
         .add('swapStart')
-        .to($problem, 1.5, {scale: 0.5, left: '-5%', ease: Circ.easeInOut}, 'swapStart')
-        .to($solution, 1.5, {scale: 0.5, right: '-5%', ease: Circ.easeInOut}, 'swapStart')
+        .to($problem, 1.5, {scale: 0.65, left: '-5%', ease: Circ.easeInOut}, 'swapStart')
+        .to($solution, 1.5, {scale: 0.65, right: '-5%', ease: Circ.easeInOut}, 'swapStart')
         .add('swapMid')
         .set($problem, {zIndex: 0})
         .set($solution, {zIndex: 10})
-        .to($problem, 1.5, {scale: 0.7, left: '0%', ease: Circ.easeInOut}, 'swapMid')
-        .to($solution, 1.5, {scale: 0.9, right: '0%', ease: Circ.easeInOut}, 'swapMid')
+        .to($problem, 1.5, {scale: 0.8, left: '0%', ease: Circ.easeInOut}, 'swapMid')
+        .to($solution, 1.5, {scale: 1, right: '0%', ease: Circ.easeInOut}, 'swapMid')
         .add(function () {
           solutionFeaturesTimeline.play()
         })
