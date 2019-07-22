@@ -175,8 +175,8 @@ $block-vertical-spacing: 4;
 
   margin: ms($block-vertical-spacing) ms(2);
 
-  &__heading {
-    text-align: center;
+  &__headings-desktop {
+    display: none;
   }
 
   &__image {
@@ -187,10 +187,37 @@ $block-vertical-spacing: 4;
     @extend %button-base;
   }
 
-  &--align-center {
-    #{$self}__heading,
-    #{$self}__content {
-      text-align: center;
+  @include susy-media ($handheld) {
+    &__content-row {
+      display: flex;
+    }
+
+    &__image {
+      min-width: 50%;
+    }
+
+    &__content {
+      flex-grow: 1;
+      padding: 0 0 0 ms(1);
+    }
+  }
+
+  @include susy-media ($desktop) {
+    &__headings-mobile {
+      display: none;
+    }
+
+    &__headings-desktop {
+      display: block;
+    }
+
+    &__image {
+      min-width: 33%;
+    }
+
+    &__content {
+      padding: 0 0 0 ms(2);
+      font-size: 1.2rem;
     }
   }
 }

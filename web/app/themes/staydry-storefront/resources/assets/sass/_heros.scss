@@ -36,6 +36,18 @@
   margin-bottom: ms(4);
   padding-bottom: ms(-1);
 
+  @include susy-media ($handheld $container-width) {
+    margin-left: ms(5);
+    margin-right: ms(5);
+    padding: 0;
+  }
+
+  @include susy-media($desktop) {
+    @include container($container-width);
+    padding: 0 ms(5);
+    box-sizing: content-box;
+  }
+
   &__headline-desktop {
     display: none;
   }
