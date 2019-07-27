@@ -62,16 +62,19 @@ var heroAnimation = {
     var solutionFeaturesTimeline = this.createFeatureTimeline($solutionFeatures, timeline);
 
     timeline
-      .from(
-        $panels,
-        0.5,
-        {
-          scale: 0.5, autoAlpha: 0
-        })
+      .add('start')
+      .to($problem,
+          0.5,
+          {scale:0.9}, 'start')
+      .to($solution,
+          0.5,
+          {scale:0.7}, 'start')
+      .to($panels,
+          0.5,
+          {autoAlpha: 1}, 'start')
       .add(function () {
         problemFeaturesTimeline.play()
       });
-
 
     if (isDesktop) {
       timeline
@@ -128,45 +131,7 @@ var heroAnimation = {
       self.timelines.mobile.main.play()
       self.timelines.desktop.main.play()
     });
-
-    // TODO: remove in production
-    var $controls = $('.animation-controls'),
-        $play = $('#animation-play'),
-        $pause = $('#animation-pause'),
-        $resume = $('#animation-resume'),
-        $reverse = $('#animation-reverse'),
-        $restart = $('#animation-restart');
-    $play.on('click', function(){
-      self.timelines.mobile.main.play();
-      self.timelines.desktop.main.play();
-      $(this).hide();
-      $pause.show();
-    });
-    $pause.hide();
-    $pause.on('click', function(){
-      self.timelines.mobile.main.pause();
-      self.timelines.desktop.main.pause();
-      $(this).hide();
-      $play.show();
-    });
-    $reverse.hide();
-    $resume.hide();
-    $restart.on('click', function(){
-      self.timelines.desktop.features.problems.seek(0).pause();
-      self.timelines.desktop.features.solutions.seek(0).pause();
-      self.timelines.mobile.features.problems.seek(0).pause();
-      self.timelines.mobile.features.solutions.seek(0).pause();
-      self.timelines.desktop.main.restart();
-      self.timelines.mobile.main.restart();
-    });
   },
-
-  play () {
-
-  },
-  reset () {
-    console.log('reset');
-  }
 };
 
 export default {

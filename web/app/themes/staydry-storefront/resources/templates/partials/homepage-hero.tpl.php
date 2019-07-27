@@ -3,16 +3,6 @@
     use function Tonik\Theme\App\template;
 
 ?>
-
-<!--TODO: remove in production -->
-<div class="animation-controls">
-    <button id="animation-play">Play</button>
-    <button id="animation-pause">Pause</button>
-    <button id="animation-resume">Resume</button>
-    <button id="animation-reverse">Reverse</button>
-    <button id="animation-restart">Restart</button>
-</div>
-
 <div class="homepage-hero">
     <div class="homepage-hero__headline-desktop">
         <h2><?= $headline ?></h2>
