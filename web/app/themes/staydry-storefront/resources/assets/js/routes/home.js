@@ -63,15 +63,21 @@ var heroAnimation = {
 
     timeline
       .add('start')
-      .to($problem,
-          0.5,
-          {scale:0.9}, 'start')
-      .to($solution,
-          0.5,
-          {scale:0.7}, 'start')
-      .to($panels,
-          0.5,
-          {autoAlpha: 1}, 'start')
+      .to(
+        $problem,
+        0.5,
+        {scale:0.9}, 'start'
+      )
+      .to(
+        $solution,
+        0.5,
+        {scale:0.7}, 'start'
+      )
+      .to(
+        $panels,
+        0.5,
+        {autoAlpha: 1}, 'start'
+      )
       .add(function () {
         problemFeaturesTimeline.play()
       });

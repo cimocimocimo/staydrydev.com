@@ -17,6 +17,7 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 		?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
+		        <div class="col-full"><!-- in function storefront_before_content() -->
 		<?php
 	}
 }
@@ -31,6 +32,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	 */
 	function storefront_after_content() {
 		?>
+			    </div><!-- .col-full -->
 			</main><!-- #main -->
 		</div><!-- #primary -->
 

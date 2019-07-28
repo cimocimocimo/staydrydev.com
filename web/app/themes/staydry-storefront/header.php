@@ -60,4 +60,7 @@
 
 	<div id="content" class="site-content" tabindex="-1">
 		<?php
+
+        if (is_product()) { print('<div class="col-full">'); }
+
 		do_action( 'storefront_content_top' );

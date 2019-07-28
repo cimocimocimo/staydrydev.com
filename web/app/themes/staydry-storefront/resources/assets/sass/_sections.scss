@@ -51,6 +51,10 @@ $block-vertical-spacing: 4;
   ul.products {
     &.columns-4 {
       li.product {
+        img {
+          width: 100%;
+        }
+
         @include susy-media (max-width $handheld) {
           @include span(6 of 12);
 
@@ -218,6 +222,13 @@ $block-vertical-spacing: 4;
     &__content {
       padding: 0 0 0 ms(2);
       font-size: 1.2rem;
+    }
+  }
+
+  &--align-center {
+    #{$self}__headings,
+    #{$self}__content-row {
+      text-align: center;
     }
   }
 }

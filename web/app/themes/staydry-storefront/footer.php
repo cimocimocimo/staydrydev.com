@@ -7,6 +7,8 @@
  * @package storefront
  */
 
+if (is_product()) { print('</div><!-- .col-full -->'); }
+
 ?>
 	</div><!-- #content -->
 
