@@ -12,7 +12,7 @@
     "lint": "npm run lint:js && npm run lint:sass"
   },
   "dependencies": {
-    "gsap": "^2.0.2",
+    "gsap": "^3.6.0",
     "scrollmagic": "^2.0.6"
   },
   "devDependencies": {
